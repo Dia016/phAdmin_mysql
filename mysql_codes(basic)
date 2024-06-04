@@ -373,5 +373,14 @@ JOIN branch                                                          ( Coumbinat
 ON employee.emp_id = branch.mgr_id;                                         # FULL Join
 
 -------------------------------------------------------------------------------------------------------
-NESTED JOIN
+NESTED QUERY
+select employee.first_name,employee.last_name from employee
+where employee.emp_id IN(select works_with.emp_id from works_with where total_sales> 30000);
+
+select client.client_name from client where client.branch_id=
+(select branch.branch_id from branch where branch.mgr_id=102);
+
+select client.client_name from client where client.branch_id=
+(select branch.branch_id from branch where branch.mgr_id=102 limit 1);
+
 -------------------------------------------------------------------------------------------------------
